@@ -23,6 +23,12 @@ modules:
                        # while putting files in /etc/ is done on booted system by system administrators.
                        # read more about this in files module reference.
 
+  - type: apt-get
+    source: ghcr.io/blue-build/modules
+    install:
+      - micro
+      - games-all
+
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
