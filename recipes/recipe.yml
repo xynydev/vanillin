@@ -27,7 +27,7 @@ modules:
     source: ghcr.io/blue-build/modules:vanilla
     install:
       - micro
-      - supertransball2
+      - gnome-calculator 
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
