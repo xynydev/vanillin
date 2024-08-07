@@ -27,7 +27,7 @@ modules:
     source: ghcr.io/blue-build/modules:vanilla
     install:
       - micro
-      - games-all
+      - supertransball2
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
