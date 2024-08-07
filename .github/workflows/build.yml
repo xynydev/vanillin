@@ -37,4 +37,4 @@ jobs:
           squash: true
 
           # enabled by default, disable if your image is small and you want faster builds      
-          # maximize_build_space: true
+          maximize_build_space: false
