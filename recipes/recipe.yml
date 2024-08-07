@@ -24,7 +24,7 @@ modules:
                        # read more about this in files module reference.
 
   - type: apt-get
-    source: ghcr.io/blue-build/modules
+    source: ghcr.io/blue-build/modules:vanilla
     install:
       - micro
       - games-all
