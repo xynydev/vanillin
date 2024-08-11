@@ -2,7 +2,7 @@
 
 This is a template / testing ground for building custom images based on VanillaOS using BlueBuild.
 
-To use this, generate a new repo based on the template. To make the builds not fail at the signing steps, follow the instructions here: https://blue-build.org/how-to/cosign/ (you can install `skopeo` on Vanilla with `sudo apt install skopeo`).
+To use this, generate a new repo based on this template. To make the builds not fail at the signing step, follow the instructions here: https://blue-build.org/how-to/cosign/ (you can install `skopeo` on Vanilla with `sudo apt install skopeo`).
 
 ## Installation
 
@@ -18,8 +18,6 @@ To rebase an existing VanillaOS installation to the latest build:
   abroot upgrade
   host-shell -- systemctl reboot
   ```
-
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
 ## Verification
 
