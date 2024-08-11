@@ -12,7 +12,7 @@ image-version: main
 
 # vanilla specific config, unstable, might change later
 base-image-type: vanilla
-blue-build-tag: vanilla
+blue-build-tag: vanilla-installer
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
