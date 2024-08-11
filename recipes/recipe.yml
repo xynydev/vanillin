@@ -29,6 +29,11 @@ modules:
     source: ghcr.io/blue-build/modules:vanilla
     install:
       - micro
+    remove:
+      - zenity
+    fix-missing: true
+    no-recommends: true
+
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
