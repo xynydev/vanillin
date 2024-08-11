@@ -37,4 +37,5 @@ modules:
         - io.github.flattool.Warehouse
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+    source: ghcr.io/blue-build/modules:vanilla
 
