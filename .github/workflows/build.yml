@@ -33,6 +33,7 @@ jobs:
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
 
+          # needed for vanilla builds currently, won't be needed in the future
           cli_version: vanilla
           squash: true
 
