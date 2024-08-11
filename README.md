@@ -1,38 +1,25 @@
-# vanillin &nbsp; [![build-ublue](https://github.com/xynydev/vanillin/actions/workflows/build.yml/badge.svg)](https://github.com/xynydev/vanillin/actions/workflows/build.yml)
+# BlueBuild VanillaOS Testing &nbsp; [![build-ublue](https://github.com/xynydev/vanillin/actions/workflows/build.yml/badge.svg)](https://github.com/xynydev/vanillin/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+This is a template / testing ground for building custom images based on VanillaOS using BlueBuild.
 
-After setup, it is recommended you update this README to describe your custom image.
+To use this, generate a new repo based on the template. To make the builds not fail at the signing steps, follow the instructions here: https://blue-build.org/how-to/cosign/ (you can install `skopeo` on Vanilla with `sudo apt install skopeo`).
 
 ## Installation
 
-> **Warning**  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+To rebase an existing VanillaOS installation to the latest build:
 
-To rebase an existing atomic Fedora installation to the latest build:
-
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
+- First change your base image to the custom image:
   ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/xynydev/vanillin:latest
+  IMAGE=xynydev/vanillin # change this
+  host-shell -- run0 bash -c "jq -r '.name |= \"$IMAGE\"' /etc/abroot/abroot.json > /etc/abroot/abroot_tmp.json && mv /etc/abroot/abroot_tmp.json /etc/abroot/abroot.json"
   ```
-- Reboot to complete the rebase:
+- Upgrade and reboot to complete the installation:
   ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xynydev/vanillin:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
+  abroot upgrade
+  host-shell -- systemctl reboot
   ```
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
-
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
 ## Verification
 
@@ -41,3 +28,4 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 ```bash
 cosign verify --key cosign.pub ghcr.io/xynydev/vanillin
 ```
+

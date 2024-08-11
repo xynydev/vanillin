@@ -1,16 +1,18 @@
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
 
 # image will be published to ghcr.io/<user>/<name>
 name: vanillin
+
 # description will be included in the image's metadata
-description: Custom image based on VanillaOS testing.
+description: Custom image based on VanillaOS.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/vanilla-os/desktop
-image-version: main # latest is also supported if you want new updates ASAP
+image-version: main
 
+# vanilla specific config, unstable, might change later
 base-image-type: vanilla
-# blue-build-tag: vanilla
+blue-build-tag: vanilla
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -34,9 +36,5 @@ modules:
       install:
         - io.github.flattool.Warehouse
 
-  - type: script
-    scripts:
-      - abroot.sh
-
-  # - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
