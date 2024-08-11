@@ -29,7 +29,9 @@ modules:
     source: ghcr.io/blue-build/modules:vanilla
     install:
       - micro
-       # install official discord .deb (you should use the flatpak, this is just showcasing the feature of fetching debs)
+
+      # you can install .deb packages from https URLs
+      # (don't do this with discord, you should use the flatpak, this is just showcase)
       - https://discord.com/api/download?platform=linux&format=deb
     remove:
       - zenity
